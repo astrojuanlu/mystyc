@@ -8,8 +8,28 @@
         <section>
             <label for="input_rest">Introduce the reStructuredText input:</label>
             <textarea id="input_rest" name="input_rest"></textarea>
-            <button type="submit">Convert</button>
+        </section>
+        <section>
+            <label for="output_myst">Result MyST:</label>
+            <textarea id="output_myst" name="output_myst" readonly="true"></textarea>
         </section>
     </form>
+<script type="text/javascript">
+let input_textarea = document.querySelector("form textarea#input_rest")
+let output_textarea = document.querySelector("form textarea#output_myst")
+
+input_textarea.oninput = function() {
+  let formData = new FormData();
+  formData.append('input_rest', input_textarea.value);
+
+  fetch("/convert", {method: 'POST', body: formData}).then((response) => {
+    return response.json();
+  }).then((json) => {
+    output_textarea.value = json['output_myst'];
+  }).catch((error) => {
+    console.log('Some error: ' + error.message);
+  });
+}
+</script>
 </body>
 </html>
