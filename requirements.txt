@@ -4,12 +4,22 @@
 #
 #    pip-compile
 #
+asgiref==3.4.1
+    # via uvicorn
 attrs==21.2.0
     # via markdown-it-py
 click==7.1.2
-    # via rst-to-myst
+    # via
+    #   rst-to-myst
+    #   uvicorn
 docutils==0.17.1
     # via rst-to-myst
+fastapi==0.67.0
+    # via -r requirements.in
+h11==0.12.0
+    # via uvicorn
+httptools==0.2.0
+    # via uvicorn
 importlib-metadata==4.6.1
     # via mdformat
 markdown-it-py==1.1.0
@@ -37,8 +47,14 @@ mdit-py-plugins==0.2.8
     #   mdformat-deflist
     #   mdformat-frontmatter
     #   mdformat-myst
+pydantic==1.8.2
+    # via fastapi
+python-dotenv==0.19.0
+    # via uvicorn
 pyyaml==5.4.1
-    # via rst-to-myst
+    # via
+    #   rst-to-myst
+    #   uvicorn
 rst-to-myst==0.3.1
     # via -r requirements.in
 ruamel.yaml==0.17.10
@@ -47,5 +63,17 @@ ruamel.yaml==0.17.10
     #   mdformat-myst
 ruamel.yaml.clib==0.2.6
     # via ruamel.yaml
+starlette==0.14.2
+    # via fastapi
+typing-extensions==3.10.0.0
+    # via pydantic
+uvicorn[standard]==0.14.0
+    # via -r requirements.in
+uvloop==0.15.3
+    # via uvicorn
+watchgod==0.7
+    # via uvicorn
+websockets==9.1
+    # via uvicorn
 zipp==3.5.0
     # via importlib-metadata

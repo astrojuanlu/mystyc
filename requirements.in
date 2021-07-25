@@ -1,1 +1,3 @@
+fastapi
 rst-to-myst
+uvicorn[standard]
