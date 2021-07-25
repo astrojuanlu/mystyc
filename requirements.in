@@ -1,3 +1,4 @@
 fastapi
+jinja2
 rst-to-myst
 uvicorn[standard]

@@ -22,11 +22,15 @@ httptools==0.2.0
     # via uvicorn
 importlib-metadata==4.6.1
     # via mdformat
+jinja2==3.0.1
+    # via -r requirements.in
 markdown-it-py==1.1.0
     # via
     #   mdformat
     #   mdit-py-plugins
     #   rst-to-myst
+markupsafe==2.0.1
+    # via jinja2
 mdformat==0.7.7
     # via
     #   mdformat-deflist
