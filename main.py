@@ -1,17 +1,12 @@
 from __future__ import annotations
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
 from rst_to_myst import rst_to_myst
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
-
-
-class InputReST(BaseModel):
-    text: str
 
 
 @app.get("/")
@@ -20,9 +15,9 @@ async def home():
 
 
 @app.post("/convert")
-async def convert(input_rest: InputReST):
+async def convert(input_rest: str = Form(...)):
     output = rst_to_myst(
-        input_rest.text,
+        input_rest,
         use_sphinx=False,
     )
     return {"input_rest": input_rest, "output_myst": output.text}

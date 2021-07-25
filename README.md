@@ -17,14 +17,12 @@ or, alternatively,
 ## Usage
 
 ```bash
-$ curl -s -H "Content-Type: application/json" -d '{"text": "Title\n-----\n\nHello world"}' -XPOST http://localhost:8000/convert | jq
+$ curl -s -d $'input_rest=Title\n-----\n\nHello world' -XPOST http://localhost:8000/convert | jq
 {
-  "input_rest": {
-    "text": "Title\n-----\n\nHello world"
-  },
+  "input_rest": "Title\n-----\n\nHello world",
   "output_myst": "# Title\n\nHello world\n"
 }
-$ curl -s -H "Content-Type: application/json" -d '{"text": "Title\n-----\n\nHello world"}' -XPOST http://localhost:8000/convert | jq '.output_myst' | xargs -I{} printf {}
+$ curl -s -d $'input_rest=Title\n-----\n\nHello world' -XPOST http://localhost:8000/convert | jq '.output_myst' | xargs -I{} printf {}
 # Title
 
 Hello world
