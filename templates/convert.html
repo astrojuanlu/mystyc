@@ -1,19 +1,57 @@
 <html>
 <head>
     <title>MySTyc - Online conversion from reStructuredText to MyST</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Montserrat', sans-serif;
+      }
+      .main {
+        width: 900px;
+        max-width: 100%;
+        margin: 60px auto;
+      }
+      textarea {
+        width: 100%;
+        height: 250px;
+        background: #222127;
+        color: #fff;
+        padding: 40px 20px 20px;
+        border-radius: 8px;
+        resize: vertical;
+        font-size: 16px;
+      }
+      h1 {
+        font-size: 42px;
+        font-weight: 600;
+        margin: 60px 0;
+      }
+      label {
+        display:  block;
+        font-size: 18px;
+        font-weight: 500;
+        margin: 30px 0 8px;
+      }
+    </style>
 </head>
 <body>
-    <h1>Hello, world!<h1>
+  <div class="main">
+    <h1>Hello, world!</h1>
     <form method="post">
         <section>
-            <label for="input_rest">Introduce the reStructuredText input:</label>
+            <label for="input_rest">Introduce the reStructuredText input</label>
             <textarea id="input_rest" name="input_rest"></textarea>
         </section>
         <section>
-            <label for="output_myst">Result MyST:</label>
+            <label for="output_myst">Result MyST</label>
             <textarea id="output_myst" name="output_myst" readonly="true"></textarea>
         </section>
     </form>
+  </div>
 <script type="text/javascript">
 let input_textarea = document.querySelector("form textarea#input_rest")
 let output_textarea = document.querySelector("form textarea#output_myst")
