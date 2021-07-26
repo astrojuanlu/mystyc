@@ -9,11 +9,6 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
 
-@app.get("/")
-async def home():
-    return {"message": "Hello, world!"}
-
-
 @app.post("/convert")
 async def convert(input_rest: str = Form(...)):
     output = rst_to_myst(
@@ -23,6 +18,6 @@ async def convert(input_rest: str = Form(...)):
     return {"input_rest": input_rest, "output_myst": output.text}
 
 
-@app.get("/convert", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 async def convert(request: Request):
     return templates.TemplateResponse("convert.html", {"request": request})
