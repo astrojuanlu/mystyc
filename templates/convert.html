@@ -61,10 +61,21 @@
   </footer>
   </div>
 <script type="text/javascript">
-let input_textarea = document.querySelector("form textarea#input_rest")
-let output_textarea = document.querySelector("form textarea#output_myst")
+const delay_ms = 500;
+
+let input_textarea = document.querySelector("form textarea#input_rest");
+let output_textarea = document.querySelector("form textarea#output_myst");
+let last = Date.now()
 
 input_textarea.oninput = function() {
+  // Avoid sending too many requests
+  let now = Date.now();
+  if (now - last < delay_ms) {
+    return;
+  } else {
+    last = Date.now()
+  }
+
   let formData = new FormData();
   formData.append('input_rest', input_textarea.value);
 
