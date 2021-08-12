@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" referrerpolicy="no-referrer"></script>
     <style>
       body {
         font-family: 'Montserrat', sans-serif;
@@ -65,17 +66,8 @@ const delay_ms = 500;
 
 let input_textarea = document.querySelector("form textarea#input_rest");
 let output_textarea = document.querySelector("form textarea#output_myst");
-let last = Date.now()
 
-input_textarea.oninput = function() {
-  // Avoid sending too many requests
-  let now = Date.now();
-  if (now - last < delay_ms) {
-    return;
-  } else {
-    last = Date.now()
-  }
-
+function convert() {
   let formData = new FormData();
   formData.append('input_rest', input_textarea.value);
 
@@ -87,6 +79,8 @@ input_textarea.oninput = function() {
     console.log('Some error: ' + error.message);
   });
 }
+
+input_textarea.oninput = _.throttle(convert, delay_ms);
 </script>
 </body>
 </html>
