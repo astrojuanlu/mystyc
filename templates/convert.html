@@ -76,6 +76,11 @@ let input_textarea = document.querySelector("form textarea#input_rest");
 let output_textarea = document.querySelector("form textarea#output_myst");
 
 function convert() {
+  if (!input_textarea.value) {
+    output_textarea.value = ""
+    return;
+  }
+
   let formData = new FormData();
   formData.append('input_rest', input_textarea.value);
 
