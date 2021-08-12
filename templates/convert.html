@@ -31,6 +31,9 @@
         font-weight: 600;
         margin: 60px 0 0;
       }
+      q {
+        font-style: italic;
+      }
       footer p {
         font-size: 12px;
       }
@@ -45,7 +48,11 @@
 <body>
   <div class="main">
     <h1>MySTyc</h1>
-    <h2>Online conversion from reStructuredText to MyST</h2>
+    <h2>Online conversion from reStructuredText to <abbr title="Markedly Structured Text">MyST</a></h2>
+    <p><q cite="https://myst-parser.readthedocs.io/">MyST is a rich and extensible flavor of Markdown meant for technical documentation and publishing</q>.
+    It combines the familiarity of Markdown with the power and extensibility of reStructuredText,
+    and <a href="https://www.sphinx-doc.org/en/master/usage/markdown.html">you can use it in your Sphinx documentation</a>.
+    <a href="https://myst-parser.readthedocs.io/">Learn more!</a></p>
     <form method="post">
         <section>
             <label for="input_rest">Introduce the reStructuredText input</label>
