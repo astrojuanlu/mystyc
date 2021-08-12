@@ -1,6 +1,8 @@
 # MySTyc
 
-Online conversor of reStructuredText to MyST.
+Online conversor of reStructuredText to MyST. Try it live here:
+
+https://mystyc.herokuapp.com/
 
 ## Installation
 
@@ -15,6 +17,14 @@ or, alternatively,
 ```
 
 ## Usage
+
+To run the service:
+
+```bash
+(.venv) $ uvicorn main:app --reload
+```
+
+You can open it in the browser or query it from the command line:
 
 ```bash
 $ curl -s -d $'input_rest=Title\n-----\n\nHello world' -XPOST http://localhost:8000/convert | jq
