@@ -5,8 +5,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-config>
+    autoclose_loader: true
+    runtimes:
+      - src: "https://cdn.jsdelivr.net/pyodide/v0.21.1/full/pyodide.js"
+        name: pyodide-0.21
+        lang: python
+    </py-config>
+    <py-env>
+    - mdformat-myst==0.1.4
+    - ruamel-yaml==0.16.13
+    - mdformat-deflist==0.1.1
+    - rst-to-myst==0.3.2
+    - paths:
+      - conversion.py
+    </py-env>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" referrerpolicy="no-referrer"></script>
     <style>
       body {
         font-family: 'Montserrat', sans-serif;
@@ -25,6 +41,7 @@
         border-radius: 8px;
         resize: vertical;
         font-size: 16px;
+        font-family: monospace;
       }
       h1 {
         font-size: 42px;
@@ -49,6 +66,19 @@
   <div class="main">
     <h1>MySTyc</h1>
     <h2>Online conversion from reStructuredText to <abbr title="Markedly Structured Text">MyST</a></h2>
+    <py-script>
+    from js import document
+    from conversion import convert
+
+    input_textarea = document.querySelector("form textarea#input_rest")
+    output_textarea = document.querySelector("form textarea#output_myst")
+
+    def do_convert(event):
+        result = convert(event.srcElement.value)
+        output_textarea.value = result['output_myst']
+
+    input_textarea.oninput = do_convert
+    </py-script>
     <p><q cite="https://myst-parser.readthedocs.io/">MyST is a rich and extensible flavor of Markdown meant for technical documentation and publishing</q>.
     It combines the familiarity of Markdown with the power and extensibility of reStructuredText,
     and <a href="https://www.sphinx-doc.org/en/master/usage/markdown.html">you can use it in your Sphinx documentation</a>.
@@ -69,31 +99,5 @@
       (<a href="https://github.com/astrojuanlu/mystyc">Source code</a>)</p>
   </footer>
   </div>
-<script type="text/javascript">
-const delay_ms = 500;
-
-let input_textarea = document.querySelector("form textarea#input_rest");
-let output_textarea = document.querySelector("form textarea#output_myst");
-
-function convert() {
-  if (!input_textarea.value) {
-    output_textarea.value = ""
-    return;
-  }
-
-  let formData = new FormData();
-  formData.append('input_rest', input_textarea.value);
-
-  fetch("/convert", {method: 'POST', body: formData}).then((response) => {
-    return response.json();
-  }).then((json) => {
-    output_textarea.value = json['output_myst'];
-  }).catch((error) => {
-    console.log('Some error: ' + error.message);
-  });
-}
-
-input_textarea.oninput = _.throttle(convert, delay_ms);
-</script>
 </body>
 </html>
