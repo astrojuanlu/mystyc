@@ -1,39 +1,17 @@
 # MySTyc
 
+[![Powered by PyScript](https://shields.io/badge/powered--by-pyscript-yellow?logo=python&style=flat-square)](https://pyscript.net/)
+
 Online conversor of reStructuredText to MyST. Try it live here:
 
-https://mystyc.herokuapp.com/
-
-## Installation
-
-```bash
-(.venv) $ pip install -r requirements.txt
-```
-
-or, alternatively,
-
-```bash
-(.venv) $ pip-sync
-```
+https://astrojuanlu.github.io/mystyc/
 
 ## Usage
 
-To run the service:
+To run the service locally, serve the HTML through any HTTP server:
 
 ```bash
-(.venv) $ uvicorn main:app --reload
+(.venv) $ python -m http.server
 ```
 
-You can open it in the browser or query it from the command line:
-
-```bash
-$ curl -s -d $'input_rest=Title\n-----\n\nHello world' -XPOST http://localhost:8000/convert | jq
-{
-  "input_rest": "Title\n-----\n\nHello world",
-  "output_myst": "# Title\n\nHello world\n"
-}
-$ curl -s -d $'input_rest=Title\n-----\n\nHello world' -XPOST http://localhost:8000/convert | jq '.output_myst' | xargs -I{} printf {}
-# Title
-
-Hello world
-```
+and that's it!
