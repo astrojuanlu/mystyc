@@ -10,15 +10,16 @@
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <py-config>
-    autoclose_loader: true
-    packages:
-      - mdformat-myst==0.1.4
-      - ruamel-yaml==0.16.13
-      - mdformat-deflist==0.1.1
-      - rst-to-myst==0.3.2
-      - attrs==21.4.0
-    paths:
-      - conversion.py
+    autoclose_loader = true
+    packages = [
+      "mdformat-myst==0.1.4",
+      "markdown-it-py==1.1.0",
+      "ruamel-yaml==0.16.13",
+      "mdformat-deflist==0.1.1",
+      "rst-to-myst==0.3.2",
+      "attrs==21.4.0",
+    ]
+    paths = ["./conversion.py"]
     </py-config>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
