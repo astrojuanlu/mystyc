@@ -6,6 +6,8 @@ Online conversor of reStructuredText to MyST. Try it live here:
 
 https://astrojuanlu.github.io/mystyc/
 
+![MySTyc preview](mystyc.gif)
+
 ## Usage
 
 To run the service locally, serve the HTML through any HTTP server:
