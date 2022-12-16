@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <py-config>
-    autoclose_loader = true
     packages = [
       "rst-to-myst==0.3.2",
       "ruamel-yaml==0.16.13",
     ]
-    paths = ["./conversion.py"]
+
+    [[fetch]]
+    files = ["./conversion.py"]
+
+    [splashscreen]
+    autoclose = true
     </py-config>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
